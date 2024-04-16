@@ -24,6 +24,6 @@ app.use(async (ctx) => {
   }
 });
 
-app.listen(8080, () => {
+app.listen(port, () => {
   console.log(`running on port: http://localhost:${port}`);
 });
