@@ -1,12 +1,12 @@
 const Koa = require('koa');
-const bodyParser = require('koa-bodyparser');
+const { koaBody } = require('koa-body');
 const router = require('./router');
 const responseHandler = require('./handler/response');
 
 const app = new Koa();
 const port = 8085;
 
-app.use(bodyParser());
+app.use(koaBody());
 app.use(responseHandler());
 app.use(router.routes());
 app.use(router.allowedMethods());
