@@ -8,6 +8,17 @@ const getShopDetails = async (ctx) => {
     console.log(error);
   }
 };
+
+const getDetail = async (ctx) => {
+  try {
+    const { sname } = ctx.params;
+    const data = await ShopModel.getDetails(sname);
+    ctx.body = { data, message: 'Shop Details Fetched' };
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const createShop = async (ctx) => {
   try {
     const { id, name } = ctx.request.body;
@@ -41,4 +52,5 @@ module.exports = {
   createShop,
   removeShop,
   updateShop,
+  getDetail,
 };

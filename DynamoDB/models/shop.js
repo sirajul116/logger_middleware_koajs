@@ -37,6 +37,27 @@ const getShopDetails = async (id) => {
   }
 };
 
+const getDetails = async (sname) => {
+  console.log(sname);
+  const params = {
+    TableName: 'shops',
+    IndexName: 'shope_name-index',
+    KeyConditionExpression: 'shope_name = :sname',
+    ExpressionAttributeValues: {
+      ':sname': sname,
+    },
+  };
+  console.log(params);
+  try {
+    const data = await docClient.query(params).promise();
+    console.log('Shop details:', data);
+    return data;
+  } catch (err) {
+    console.error('Error getting shop details:', err);
+    throw err;
+  }
+};
+
 const updateShop = async (id, name) => {
   const params = {
     TableName: 'shops',
@@ -86,4 +107,5 @@ module.exports = {
   createShop,
   updateShop,
   deleteShop,
+  getDetails,
 };
