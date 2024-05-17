@@ -47,7 +47,6 @@ const getDetails = async (sname) => {
       ':sname': sname,
     },
   };
-  console.log(params);
   try {
     const data = await docClient.query(params).promise();
     console.log('Shop details:', data);
